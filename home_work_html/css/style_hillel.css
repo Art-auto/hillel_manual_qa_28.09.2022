@@ -1,0 +1,35 @@
+*{
+    font-family: 'Courier New', Courier, monospace;
+    color: grey;
+}
+h1{
+  text-align: center;
+  color: black;
+}
+
+#myImg {
+    border: 15px solid transparent;
+    border-image: url(https://www.poland.travel/images/ru-RU/zima/StawGasienicowy.jpg);
+    border-image-repeat: round;
+    border-image-slice: 10;
+    }
+
+    h3{
+        color: darkslategray;
+        border-block-style: solid;
+        border-block-width: 3px;
+    }
+
+    ul a{
+        font-weight: bold;
+        color: darkcyan;
+    }
+
+.main {
+background: dimgrey;
+color: aliceblue;
+font-style: italic;
+}
+table{
+    margin-left: 5mm;
+}
