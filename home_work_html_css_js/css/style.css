@@ -10,7 +10,7 @@ h3{
 
 /* перенес в стили описание кнопки что бы в одном месте описывать параметры всех кнопок */
 div>button{
-    width:24.5%;
+    width:19%;
     background-color: #9babf3; /* Green */
     border: none;
     color: white;
@@ -26,6 +26,11 @@ div>button{
     display: block;
     margin-left: auto;
     margin-right: auto }
+
+/* падинги для HW JS */
+.textHwJs{
+    margin: 10px 10px 10% 10px; /* Отступы вокруг */
+   }
 
 
 /* ТУТ Я НЕМНОГО ПОКОПИСТАИЛ И ПОДКЛЮЧИЛЬ РАЗНЫХ СТИЛЕЙ И ПЛЮШЕК ИЗ ИНЕТА :)*/
@@ -99,7 +104,6 @@ div>button{
 @media (max-width:690px) {    
     .pouring {font-size: 20px;}    
 }
-
 
 
 
