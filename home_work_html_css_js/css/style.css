@@ -1,0 +1,111 @@
+/* описывае шрифт всей страницы */
+*{
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+/* добавляем к стилю шривфта - писать все заглавными буквами */
+h3{
+    text-transform: uppercase;
+}
+
+/* перенес в стили описание кнопки что бы в одном месте описывать параметры всех кнопок */
+div>button{
+    width:19%;
+    background-color: #9babf3; /* Green */
+    border: none;
+    color: white;
+    padding: 7px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 13px;   
+}
+
+/* центровка блоков */
+.blocCentr{
+    display: block;
+    margin-left: auto;
+    margin-right: auto }
+
+/* падинги для HW JS */
+.textHwJs{
+    margin: 10px 10px 10% 10px; /* Отступы вокруг */
+   }
+
+
+/* ТУТ Я НЕМНОГО ПОКОПИСТАИЛ И ПОДКЛЮЧИЛЬ РАЗНЫХ СТИЛЕЙ И ПЛЮШЕК ИЗ ИНЕТА :)*/
+
+/* The navigation bar */
+.navbar {
+    overflow: hidden;
+    position: fixed; /* Set the navbar to fixed position */
+    top: 0; /* Position the navbar at the top of the page */
+    width: 100%; /* Full width */
+}
+
+
+/* Выравнивание текста и картинок */
+.leftimg {
+    float: left; /* Выравнивание по левому краю */
+    margin: 7px 7px 7px 0; /* Отступы вокруг картинки */
+   }
+.rightimg  {
+    float: right; /* Выравнивание по правому краю  */ 
+    margin: 7px 0 7px 7px; /* Отступы вокруг картинки */
+   }
+.otstup  {
+    margin: 0px 0px 15% 0px; /* Отступы вокруг картинки */
+   }
+.forFuter {
+   border: none; /* Убираем границу */
+   background-color: rgb(0, 0, 0); /* Цвет линии */
+   color: rgb(0, 0, 0); /* Цвет линии для IE6-7 */
+   height: 2px; /* Толщина линии */
+}
+
+
+/* описание стиля переливающегося текста заголовка страницы */
+.pouring {
+    font-size: 30px;
+    line-height: 100px;
+    font-family: Verdana, sans-serif;
+    font-weight: 900;
+    position: relative;
+    background: white;
+    overflow: hidden;
+    text-transform: uppercase;
+    text-align: center;
+}
+.pouring:before {
+    content: '';
+    position: absolute;
+    filter: blur(10px);
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    mix-blend-mode: screen;
+    background-image: repeating-linear-gradient(-45deg, transparent, transparent 1em, #BFE2FF 1em, #337AB7 50%), repeating-linear-gradient(45deg, #337AB7, #337AB7 1em, #FFF 1em, #BFE2FF 50%);
+    background-size: 3em 3em, 2em 2em;
+    animation-name: ani;
+    animation-duration: 10s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+@keyframes ani {
+    from {
+        background-position: 0 0;
+    }
+    to {
+        background-position: 100% 0;
+    }
+}
+@media (max-width:690px) {    
+    .pouring {font-size: 20px;}    
+}
+
+
+
+
+
