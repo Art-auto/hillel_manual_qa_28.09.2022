@@ -1,0 +1,51 @@
+body {
+    background-color: bisque;
+}
+
+.list {
+    font-size: 120%;
+    font-family: cursive;
+    color: rgb(20, 5, 73);
+    margin-left: 25px;
+}
+
+#Text1 {
+    text-align: center;
+    font-size: 120%;
+    color: rgb(82, 8, 54);
+    font-style: italic;
+    margin-bottom: 24px;
+    margin-left: 30px;
+    margin-right: 30px;
+}
+
+#pict1{
+    margin-left: 25%;
+    margin-right;: 25%;
+}
+
+.Header {
+    text-align: center;
+    color: rgb(69, 25, 228);
+    font-size: 200%;
+}
+
+p {
+    margin-left: 20px;
+    margin-right: 20px;
+    text-indent: 1.5em;
+    }
+
+.performance {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size: x-large;
+    color: rgb(67, 4, 4);
+    margin-left: 25px;
+}
+
+#ticket {
+    border: 5px solid red;
+    border-block-width: 50%;
+    margin-left: 35%;
+    margin-right: 35%;
+}
