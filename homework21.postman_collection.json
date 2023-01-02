@@ -1,0 +1,220 @@
+{
+	"info": {
+		"_postman_id": "1fe2fdab-6eee-429d-a2fa-a8a5cb00625d",
+		"name": "homework21",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "25029651"
+	},
+	"item": [
+		{
+			"name": "post signup",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\": \"John\",\r\n  \"lastName\": \"Dou\",\r\n  \"email\": \"teskjjkt@test.com\",\r\n  \"password\": \"Qwerty12345\",\r\n  \"repeatPassword\": \"Qwerty12345\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://qauto.forstudy.space/api/auth/signup",
+					"protocol": "https",
+					"host": [
+						"qauto",
+						"forstudy",
+						"space"
+					],
+					"path": [
+						"api",
+						"auth",
+						"signup"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "post signin",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"email\": \"1234@test.com\",\r\n  \"password\": \"Qwerty12345\",\r\n  \"remember\": false\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://qauto.forstudy.space/api/auth/signin",
+					"protocol": "https",
+					"host": [
+						"qauto",
+						"forstudy",
+						"space"
+					],
+					"path": [
+						"api",
+						"auth",
+						"signin"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "change name",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\": \"vasya\",\r\n  \"lastName\": \"vasya\",\r\n  \"email\": \"1234@test.com\",\r\n  \"password\": \"Qwerty12345\",\r\n  \"repeatPassword\": \"Qwerty12345\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://qauto.forstudy.space/api/users/profile",
+					"protocol": "https",
+					"host": [
+						"qauto",
+						"forstudy",
+						"space"
+					],
+					"path": [
+						"api",
+						"users",
+						"profile"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "search porshe 911",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://qauto.forstudy.space/api/cars/models",
+					"protocol": "https",
+					"host": [
+						"qauto",
+						"forstudy",
+						"space"
+					],
+					"path": [
+						"api",
+						"cars",
+						"models"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "porshe 911",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": ""
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "expenses",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "669ddfe010bf2a004af1c32daeb1627a0835de9a23631119620ed140a0a93da3",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"carId\": 33880,\r\n  \"reportedAt\": \"2023-01-02\",\r\n  \"mileage\": 150,\r\n  \"liters\": 11,\r\n  \"totalCost\": 11,\r\n  \"forceMileage\": false\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://qauto.forstudy.space/api/expenses",
+					"protocol": "https",
+					"host": [
+						"qauto",
+						"forstudy",
+						"space"
+					],
+					"path": [
+						"api",
+						"expenses"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "logout",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "669ddfe010bf2a004af1c32daeb1627a0835de9a23631119620ed140a0a93da3",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://qauto.forstudy.space/api/auth/logout",
+					"protocol": "https",
+					"host": [
+						"qauto",
+						"forstudy",
+						"space"
+					],
+					"path": [
+						"api",
+						"auth",
+						"logout"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
