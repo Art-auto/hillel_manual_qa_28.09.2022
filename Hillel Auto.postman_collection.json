@@ -8,12 +8,47 @@
 	"item": [
 		{
 			"name": "Create User",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"pm.variables.replaceIn('{{$randomFirstName}}')\r",
+							"pm.variables.replaceIn('{{$randomLastName}}')\r",
+							"let email = pm.variables.replaceIn('{{$randomEmail}}')\r",
+							"pm.collectionVariables.set(\"randomEmailForSave\", email)"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(201);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"distanceUnits is km\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.data.distanceUnits).to.eql('km');\r",
+							"});\r",
+							"\r",
+							"pm.test(\"photoFilename is default\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.data.photoFilename).to.eql('default-user.png');\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"request": {
 				"method": "POST",
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n  \"name\": \"Vlad\",\r\n  \"lastName\": \"Luginin\",\r\n  \"email\": \"Gurus5684s7@ukr.net\",\r\n  \"password\": \"Qwerty12345\",\r\n  \"repeatPassword\": \"Qwerty12345\"\r\n}",
+					"raw": "{\r\n  \"name\": \"{{$randomFirstName}}\",\r\n  \"lastName\": \"{{$randomLastName}}\",\r\n  \"email\": \"{{randomEmailForSave}}\",\r\n  \"password\": \"Qwerty12345\",\r\n  \"repeatPassword\": \"Qwerty12345\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -39,12 +74,40 @@
 		},
 		{
 			"name": "Sing In",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"currency is usd\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.data.currency).to.eql('usd');\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"request": {
 				"method": "POST",
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n  \"email\": \"Gurus5684s7@ukr.net\",\r\n  \"password\": \"Qwerty12345\",\r\n  \"remember\": false\r\n}",
+					"raw": "{\r\n  \"email\": \"{{randomEmailForSave}}\",\r\n  \"password\": \"Qwerty12345\",\r\n  \"remember\": false\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -70,12 +133,46 @@
 		},
 		{
 			"name": "Change Name and Last name",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"let name = pm.variables.replaceIn('{{$randomFirstName}}')\r",
+							"pm.collectionVariables.set(\"randomNameForSave\", name)\r",
+							"pm.variables.replaceIn('{{$randomLastName}}')"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"status is ok\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.status).to.eql('ok');\r",
+							"});\r",
+							"\r",
+							"pm.test(\"photoFilename is default\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.data.photoFilename).to.eql('default-user.png');\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"request": {
 				"method": "PUT",
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n  \"name\": \"John\",\r\n  \"lastName\": \"Dou\"\r\n}",
+					"raw": "{\r\n  \"name\": \"{{randomNameForSave}}\",\r\n  \"lastName\": \"{{$randomLastName}}\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -100,13 +197,132 @@
 			"response": []
 		},
 		{
+			"name": "Brand cars ID",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"status is ok\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.status).to.eql('ok');\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://qauto.forstudy.space/api/cars/brands",
+					"protocol": "https",
+					"host": [
+						"qauto",
+						"forstudy",
+						"space"
+					],
+					"path": [
+						"api",
+						"cars",
+						"brands"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Model cars ID",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"status is ok\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.status).to.eql('ok');\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://qauto.forstudy.space/api/cars/models",
+					"protocol": "https",
+					"host": [
+						"qauto",
+						"forstudy",
+						"space"
+					],
+					"path": [
+						"api",
+						"cars",
+						"models"
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "Create new car",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(201);\r",
+							"});\r",
+							"pm.test(\"Check brand\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.data.brand).to.eql('Porsche');\r",
+							"});\r",
+							"pm.test(\"Check brand\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.data.model).to.eql('911');\r",
+							"});\r",
+							"\r",
+							"var jsonData = pm.response.json();\r",
+							"let ID = jsonData.data.id;\r",
+							"pm.collectionVariables.set(\"idForSave\", ID)\r",
+							"\r",
+							"\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"request": {
 				"method": "POST",
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n  \"carBrandId\": 4,\r\n  \"carModelId\": 16,\r\n  \"mileage\": 308\r\n}",
+					"raw": "{\r\n  \"carBrandId\": 4,\r\n  \"carModelId\": 16,\r\n  \"mileage\": 35\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -130,57 +346,44 @@
 			"response": []
 		},
 		{
-			"name": "Brand cars ID",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "https://qauto.forstudy.space/api/cars/brands",
-					"protocol": "https",
-					"host": [
-						"qauto",
-						"forstudy",
-						"space"
-					],
-					"path": [
-						"api",
-						"cars",
-						"brands"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Model cars ID",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "https://qauto.forstudy.space/api/cars/models",
-					"protocol": "https",
-					"host": [
-						"qauto",
-						"forstudy",
-						"space"
-					],
-					"path": [
-						"api",
-						"cars",
-						"models"
-					]
-				}
-			},
-			"response": []
-		},
-		{
 			"name": "Fuel expenses",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"var i = parseInt(pm.collectionVariables.get(\"mileageForSave\"))+1\r",
+							"pm.collectionVariables.set(\"mileageForSave\",i)"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(201);\r",
+							"});\r",
+							"pm.test(\"Check brand\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.data.brand).to.eql('Porsche');\r",
+							"});\r",
+							"pm.test(\"Check ID\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.data.model).to.eql('911');\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"request": {
 				"method": "POST",
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n  \"carId\": 34010,\r\n  \"reportedAt\": \"2023-01-05\",\r\n  \"mileage\": 405,\r\n  \"liters\": 15,\r\n  \"totalCost\": 20,\r\n  \"forceMileage\": false\r\n}",
+					"raw": "{\r\n  \"carId\": {{idForSave}},\r\n  \"reportedAt\": \"2023-01-15\",\r\n  \"mileage\": {{mileageForSave}},\r\n  \"liters\": 15,\r\n  \"totalCost\": 20,\r\n  \"forceMileage\": false\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -205,6 +408,24 @@
 		},
 		{
 			"name": "Logout",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"status is ok\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.status).to.eql('ok');\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"request": {
 				"method": "GET",
 				"header": [],
@@ -224,6 +445,32 @@
 				}
 			},
 			"response": []
+		}
+	],
+	"variable": [
+		{
+			"key": "randomEmailForSave",
+			"value": ""
+		},
+		{
+			"key": "randomNameForSave",
+			"value": ""
+		},
+		{
+			"key": "idForSave",
+			"value": ""
+		},
+		{
+			"key": "mileageForSave",
+			"value": ""
+		},
+		{
+			"key": "mileageForSave1",
+			"value": ""
+		},
+		{
+			"key": "dataForSave",
+			"value": ""
 		}
 	]
 }
