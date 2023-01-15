@@ -291,7 +291,7 @@
 							"    var jsonData = pm.response.json();\r",
 							"    pm.expect(jsonData.data.brand).to.eql('Porsche');\r",
 							"});\r",
-							"pm.test(\"Check brand\", function () {\r",
+							"pm.test(\"Check model\", function () {\r",
 							"    var jsonData = pm.response.json();\r",
 							"    pm.expect(jsonData.data.model).to.eql('911');\r",
 							"});\r",
@@ -349,30 +349,30 @@
 			"name": "Fuel expenses",
 			"event": [
 				{
-					"listen": "prerequest",
+					"listen": "test",
 					"script": {
 						"exec": [
-							"var i = parseInt(pm.collectionVariables.get(\"mileageForSave\"))+1\r",
-							"pm.collectionVariables.set(\"mileageForSave\",i)"
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.test(\"Check liters\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.data.liters).to.eql(15);\r",
+							"});\r",
+							"pm.test(\"Check ID\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.data.totalCost).to.eql(20);\r",
+							"});"
 						],
 						"type": "text/javascript"
 					}
 				},
 				{
-					"listen": "test",
+					"listen": "prerequest",
 					"script": {
 						"exec": [
-							"pm.test(\"Status code is 200\", function () {\r",
-							"    pm.response.to.have.status(201);\r",
-							"});\r",
-							"pm.test(\"Check brand\", function () {\r",
-							"    var jsonData = pm.response.json();\r",
-							"    pm.expect(jsonData.data.brand).to.eql('Porsche');\r",
-							"});\r",
-							"pm.test(\"Check ID\", function () {\r",
-							"    var jsonData = pm.response.json();\r",
-							"    pm.expect(jsonData.data.model).to.eql('911');\r",
-							"});"
+							"var i = parseInt(pm.collectionVariables.get(\"mileageForSave\"))+1\r",
+							"pm.collectionVariables.set(\"mileageForSave\",i)"
 						],
 						"type": "text/javascript"
 					}
