@@ -301,7 +301,6 @@
 							"pm.collectionVariables.set(\"idForSave\", ID)\r",
 							"\r",
 							"\r",
-							"\r",
 							""
 						],
 						"type": "text/javascript"
@@ -372,7 +371,9 @@
 					"script": {
 						"exec": [
 							"var i = parseInt(pm.collectionVariables.get(\"mileageForSave\"))+1\r",
-							"pm.collectionVariables.set(\"mileageForSave\",i)"
+							"pm.collectionVariables.set(\"mileageForSave\",i)\r",
+							"pm.variables.replaceIn('{{$isoTimestamp}}')\r",
+							""
 						],
 						"type": "text/javascript"
 					}
@@ -383,7 +384,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n  \"carId\": {{idForSave}},\r\n  \"reportedAt\": \"2023-01-15\",\r\n  \"mileage\": {{mileageForSave}},\r\n  \"liters\": 15,\r\n  \"totalCost\": 20,\r\n  \"forceMileage\": false\r\n}",
+					"raw": "{\r\n  \"carId\": {{idForSave}},\r\n  \"reportedAt\": \"{{$isoTimestamp}}\",\r\n  \"mileage\": {{mileageForSave}},\r\n  \"liters\": 15,\r\n  \"totalCost\": 20,\r\n  \"forceMileage\": false\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
