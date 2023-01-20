@@ -300,6 +300,9 @@
 							"let ID = jsonData.data.id;\r",
 							"pm.collectionVariables.set(\"idForSave\", ID)\r",
 							"\r",
+							"let mileage = pm.variables.replaceIn('35')\r",
+							"pm.collectionVariables.set(\"mileageForSave\", mileage)\r",
+							"\r",
 							"\r",
 							""
 						],
