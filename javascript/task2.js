@@ -1,7 +1,8 @@
-let triangle = '';
-limit = 5;
-while (limit > 0) {
-    
-console.log( triangle += '*' )
-limit -= 1;
+const drawTriangle = (n, star) => {
+    let result = "";
+    for(let i=1; i<=n; i++){
+        result = result + star;
+        console.log(result);
+    }
 }
+drawTriangle(5,"*");
