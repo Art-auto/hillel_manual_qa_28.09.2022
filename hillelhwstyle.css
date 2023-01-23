@@ -1,0 +1,46 @@
+.h1 {
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    color: rgb(0, 0, 0);
+}
+.p {
+    font-family: cursive;
+    color: rgb(255, 0, 0);
+}
+
+.aphoto {
+    font-family: cursive;
+    color: rgb(0, 0, 0);
+}
+
+.h2{
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    color: rgb(0, 0, 0);
+}
+
+.img1{
+   margin: 10px;
+}
+
+.img2{
+    margin: 20px;
+ }
+
+ .h3 {
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    color: rgb(0, 0, 0);
+}
+
+.ul{
+   background-color: aquamarine;
+   width: 300px;
+}
+
+.h33{
+    background-color: rgb(203, 3, 253);
+    width: 200px;
+}
+
+.aforfoot{
+    font-family: cursive;
+    color: rgb(0, 0, 0);
+}
